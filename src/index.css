@@ -13,8 +13,10 @@
     --radius-6xl: 4rem;
     --radius-7xl: 5rem;
 
+    --radius-1xl: 1rem;
     --spacing-9xl: 3000px;
     --spacing-10xl: 8000px;
+    --spacing-product: 300px;
 
     --inset-95: 220%;
     --inset-90: 770%;
@@ -32,4 +34,32 @@
         transform: translateX(-50%);
     }
     }
+}
+
+:root {
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb: rgba(0,0,0,.28);
+  --scrollbar-thumb-hover: rgba(0,0,0,.45);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --scrollbar-thumb: rgba(99, 99, 99, 0.28);
+    --scrollbar-thumb-hover: rgba(49, 49, 49, 0.45);
+  }
+}
+
+.scrollbar::-webkit-scrollbar, .scrollbar-none::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+.scrollbar::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 9999px;
+}
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
 }

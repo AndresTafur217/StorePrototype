@@ -1,12 +1,12 @@
 const BASE_URL = 'http://localhost:5000';
 
 export const API_ENDPOINTS = {
-  getProducts: `${BASE_URL}/api/product`,
-  getTypes: `${BASE_URL}/api/types`,
-  getAreas: `${BASE_URL}/api/areas`,
-  getUsers: `${BASE_URL}/api/user`,
-  getOrders: `${BASE_URL}/api/order`,
-  getFavorites: `${BASE_URL}/api/favorite`,
-  getInvoices: `${BASE_URL}/api/invoice`,
-  getHistory: `${BASE_URL}/api/history`
+  products: `${BASE_URL}/api/products`,
+  types: `${BASE_URL}/api/types`,
+  areas: `${BASE_URL}/api/areas`,
+  users: `${BASE_URL}/api/users`,
+  orders: `${BASE_URL}/api/orders`,
+  favorites: `${BASE_URL}/api/favorites`,
+  invoices: `${BASE_URL}/api/invoices`,
+  history: `${BASE_URL}/api/historys`
 }
