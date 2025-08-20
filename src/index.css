@@ -15,13 +15,13 @@
 
     --radius-1xl: 1rem;
     --spacing-9xl: 3000px;
-    --spacing-10xl: 8000px;
+    --spacing-10xl: 3600px;
     --spacing-product: 300px;
 
-    --inset-95: 220%;
-    --inset-90: 770%;
-    --inset-85: 90%;
-    --inset-80: 250%;
+    --inset-95: 89%;
+    --inset-90: 280%;
+    --inset-85: 92%;
+    --inset-80: 230%;
 
     --animate-slider: slider 20s linear infinite;
 

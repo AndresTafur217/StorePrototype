@@ -9,7 +9,6 @@ export function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/tipos" element={<Types />} />
           </Routes>
         </Router>
     </>
