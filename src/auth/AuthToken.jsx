@@ -97,7 +97,7 @@ export function AuthToken({ to, children }) {
 
       {showLogin && (
         <div className="fixed inset-0 bg-black/50 bg-opacity-40 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-xl shadow-lg w-96">
+          <div className="bg-store-bg2/80 p-6 rounded-4xl shadow-2xl w-96">
             <Login
               onClose={() => setShowLogin(false)}
               onSuccess={handleLoginSuccess}

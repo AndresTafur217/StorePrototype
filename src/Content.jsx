@@ -30,7 +30,7 @@ export function Content() {
       <section className="w-full h-20 p-2.5 overflow-x-auto scrollbar">
         <Areas />
       </section>
-      <section className="w-full p-2.5">
+      <section className="w-full">
         <Products />
       </section>
     </div>

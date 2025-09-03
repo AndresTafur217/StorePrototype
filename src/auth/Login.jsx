@@ -44,9 +44,9 @@ export function Login({ onClose }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-4 w-full max-w-sm mx-auto"
+      className="flex flex-col gap-4 w-full mx-auto"
     >
-      <h2 className="text-xl font-bold text-center">Iniciar Sesión</h2>
+      <h2 className="text-xl w-full border-b p-2.5 font-bold text-center">Iniciar Sesión</h2>
 
       {error && <p className="text-red-500 text-center">{error}</p>}
 
@@ -55,7 +55,7 @@ export function Login({ onClose }) {
         placeholder="Correo"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="border p-2 rounded"
+        className="border p-2 rounded-1xl text-center focus:text-left hover:scale-101 transition-all ease-in-out"
         required
       />
 
@@ -64,14 +64,14 @@ export function Login({ onClose }) {
         placeholder="Contraseña"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className="border p-2 rounded"
+        className="border p-2 rounded-1xl text-center focus:text-left hover:scale-101 transition-all ease-in-out"
         required
       />
 
       <button 
         type="submit" 
         disabled={isLoading}
-        className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700 disabled:opacity-50"
+        className="bg-blue-800 w-1/2 mx-auto text-white p-2 rounded-1xl transition-all ease-in-out hover:scale-105 hover:bg-blue-900 disabled:opacity-50"
       >
         {isLoading ? "Ingresando..." : "Ingresar"}
       </button>
@@ -79,7 +79,7 @@ export function Login({ onClose }) {
       <button
         type="button"
         onClick={onClose}
-        className="bg-gray-400 text-white p-2 rounded hover:bg-gray-500"
+        className="bg-gray-600 w-1/3 mx-auto text-white p-2 rounded-1xl transition-all ease-in-out hover:bg-gray-700 hover:scale-105"
       >
         Cancelar
       </button>

@@ -41,7 +41,14 @@ export function Favorites() {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="h-max w-full flex flex-row flex-wrap gap-2.5">
+      {currentFavorites.length != 0 ? (
+      <div className="w-full h-max flex flex-row flex-wrap gap-2.5 justify-start items-center p-2.5">
+        <div className="border border-gray-400 w-max h-max py-1 px-2.5 rounded-xl cursor-pointer 
+          transition-all ease-in-out hover:scale-105 hover:bg-store-details hover:border-gray-950 
+          hover:shadow-2xl">filtrar</div>
+      </div>) : null}
+      <div className={`h-max w-full flex flex-row flex-wrap gap-2.5 
+        ${currentFavorites.length === 0 ? ('justify-center items-center') : ('justify-start items-start')}`}>
         {currentFavorites.length === 0 ? (
           <div className="col-span-5 flex flex-col items-center justify-center p-8 text-gray-500">
             <svg className="w-16 h-16 mb-4 text-gray-300">
@@ -97,29 +104,52 @@ export function Favorites() {
                 key={favorite.id}
                 className="h-product w-product rounded-4xl p-2.5 flex flex-col gap-1.5 bg-store-bg2/50 shadow-lg"
               >
-                <section className="h-2/3 w-full rounded-t-3xl bg-store-bg2/70 overflow-hidden">
-                  <div className={`w-full h-full relative flex justify-center items-center
-                    ${product.stock <= 10 ? 'bg-black/50 font-semibold' : ''}`}>
+                <section className="h-2/3 w-full rounded-t-3xl bg-store-bg2/70 overflow-hidden relative">
+                  {/* Imagen principal */}
+                  {product.imagenes?.length > 0 ? (
+                    <img
+                      src={product.imagenes[0].url}
+                      alt={product.imagenes[0].alt || product.nombre}
+                      className="w-full h-full object-contain"
+                    />
+                  ) : product.imagen ? ( // si solo tiene una propiedad "imagen"
+                    <img
+                      src={product.imagen}
+                      alt={product.nombre}
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-500">
+                      Sin imagen
+                    </div>
+                  )}
+
+                  {/* Overlay stock */}
+                  {mensajeStock && (
+                    <div className="absolute top-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded-md">
                       {mensajeStock}
+                    </div>
+                  )}
+
+                  {/* Botón favoritos */}
+                  <div 
+                    className={`absolute right-0 bottom-0 border p-1 m-3 rounded-full cursor-pointer transition-colors ${
+                      isInFavorites 
+                        ? 'border-red-600 text-red-600 hover:text-red-800 hover:border-red-800' 
+                        : 'text-gray-600 hover:text-black'
+                    }`}
+                  >
                     <div 
-                      className={`absolute right-0 bottom-0 border p-1 m-3 float-right rounded-full cursor-pointer transition-colors ${
-                        isInFavorites 
-                          ? 'border-red-600 text-red-600 hover:text-red-800 hover:border-red-800' 
-                          : 'text-gray-600 hover:text-black'
-                      }`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        handleFavoriteClick(product.id);
+                      }}
+                      className={loading ? 'opacity-50 pointer-events-none' : ''}
                     >
-                      <div 
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          handleFavoriteClick(product.id);
-                        }}
-                        className={loading ? 'opacity-50 pointer-events-none' : ''}
-                      >
-                        <svg width="25" height="25">
-                          <use xlinkHref={isInFavorites ? "/sprite.svg#removebm" : "/sprite.svg#addbm"} />
-                        </svg>
-                      </div>
+                      <svg width="25" height="25">
+                        <use xlinkHref={isInFavorites ? "/sprite.svg#removebm" : "/sprite.svg#addbm"} />
+                      </svg>
                     </div>
                   </div>
                 </section>
@@ -172,7 +202,7 @@ export function Favorites() {
         </div>
       )}
 
-      {/* Paginación - Solo mostrar si hay más de una página */}
+      {/* Paginación */}
       {totalPages > 1 && (
         <div className="flex justify-center items-center gap-4 mt-4">
           <button
@@ -184,7 +214,7 @@ export function Favorites() {
               <use xlinkHref="/sprite.svg#arrowl" />
             </svg>
           </button>
-          <span className="">
+          <span>
             Página {currentPage} de {totalPages}
           </span>
           <button
